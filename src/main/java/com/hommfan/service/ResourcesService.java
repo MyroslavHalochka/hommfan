@@ -1,5 +1,10 @@
 package com.hommfan.service;
 
-public class ResourcesService {
+import com.hommfan.model.Resources;
+import java.util.List;
+
+public interface ResourcesService {
+
+  Iterable<Resources> getAll();
 
 }

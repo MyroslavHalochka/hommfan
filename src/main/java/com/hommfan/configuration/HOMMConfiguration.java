@@ -8,6 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 //import org.thymeleaf.spring5.SpringTemplateEngine;
@@ -16,7 +17,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @ComponentScan(basePackages = {"com.hommfan"})
-@PropertySource("classpath:raceInteractor.properties")
+@PropertySource("classpath:hommfan.properties")
 @EnableWebMvc
 public class HOMMConfiguration implements WebMvcConfigurer {
 
@@ -33,6 +34,15 @@ public class HOMMConfiguration implements WebMvcConfigurer {
   public RaceInteractor raceInteractor() {
 
     return new RaceInteractor();
+
+  }
+
+  public void addViewControllers(ViewControllerRegistry registry) {
+
+    registry.addViewController("/artifacts").setViewName("artifacts");
+    registry.addViewController("/").setViewName("");
+    registry.addViewController("/resources").setViewName("resources");
+    registry.addViewController("/login").setViewName("login");
 
   }
 
@@ -71,7 +81,7 @@ public class HOMMConfiguration implements WebMvcConfigurer {
 
 //  @Override
 //  public void addViewControllers(ViewControllerRegistry registry) {
-//    registry.addViewController("/hello").setViewName("hello.html");
+//    registry.addViewController("/hello").setViewName("artifacts.html");
 //    registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
 //  }
 

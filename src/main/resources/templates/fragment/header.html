@@ -1,11 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Sieg Heil!</title>
-  <link rel="shortcut icon" href="static/favicon.ico">
-</head>
-<body>
-  <h2>Sieg Heil!</h2>
-</body>
-</html>
+<div th:fragment="header">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+
+      <ul class="nav col-9 mb-2 justify-content-center mb-md-0">
+        <li><a href="/" class="nav-link px-2 link-secondary">Home</a></li>
+        <li><a href="/artifacts" class="nav-link px-2 link-dark">Artifacts</a></li>
+        <li><a href="/buildings" class="nav-link px-2 link-dark">Buildings</a></li>
+        <li><a href="/factions" class="nav-link px-2 link-dark">Factions</a></li>
+        <li><a href="/resources" class="nav-link px-2 link-dark">Resources</a></li>
+        <li><a href="/heroes" class="nav-link px-2 link-dark">Heroes</a></li>
+        <li><a href="/skills" class="nav-link px-2 link-dark">Skills</a></li>
+        <li><a href="/specialties" class="nav-link px-2 link-dark">Specialties</a></li>
+        <li><a href="/spells" class="nav-link px-2 link-dark">Spells</a></li>
+        <li><a href="/about" class="nav-link px-2 link-dark">About</a></li>
+      </ul>
+
+      <form class="col-md-3 mb-md-0 text-start" action="/login" method="get">
+        <button type="submit" class="btn btn-outline-primary me-2">Sign in</button>
+        <button type="submit" formaction="/login" class="btn btn-primary">Sign up</button>
+      </form>
+    </div>
+  </div>
+</div>

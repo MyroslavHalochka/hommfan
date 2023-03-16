@@ -2,98 +2,33 @@ package com.hommfan.controller;
 
 import com.hommfan.model.Resources;
 import com.hommfan.service.ResourcesService;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
-public class RestController {
+@RestController
+public class RestApiController {
 
   private ResourcesService resourcesService;
 
   @Autowired
-  public RestController(ResourcesService resourcesService) {
+  public RestApiController(ResourcesService resourcesService) {
 
     this.resourcesService = resourcesService;
 
   }
 
-  @GetMapping("/")
-  public String index(Model model) {
+  @GetMapping("/get_resources")
+  public List<Resources> resources() {
 
-    model.addAttribute("title", "Main page");
+    List<Resources> resourcesList = new ArrayList<>();
+    resourcesService.getAll().forEach(resourcesList::add);
 
-    return "index";
-
-  }
-
-  @GetMapping("/artifacts")
-  public String artifacts(Model model) {
-
-    model.addAttribute("title", "Artifacts");
-
-    return "artifacts";
-
-  }
-
-  @GetMapping("/buildings")
-  public String buildings() {
-
-    return "buildings";
-
-  }
-
-  @GetMapping("/factions")
-  public String factions() {
-
-    return "factions";
-
-  }
-
-  @GetMapping("/resources")
-  public String resources(Model model) {
-
-    Iterable<Resources> resourcesList = resourcesService.getAll();
-    model.addAttribute("title", "Resources");
-    model.addAttribute("resources", resourcesList);
-
-    return "resources";
-
-  }
-
-  @GetMapping("/heroes")
-  public String heroes() {
-
-    return "heroes";
-
-  }
-
-  @GetMapping("/skills")
-  public String skills() {
-
-    return "skills";
-
-  }
-
-  @GetMapping("/specialties")
-  public String specialties() {
-
-    return "specialties";
-
-  }
-
-  @GetMapping("/spells")
-  public String spells() {
-
-    return "spells";
-
-  }
-
-  @GetMapping("/about")
-  public String about() {
-
-    return "about";
+    return resourcesList;
+//    return new Resources(1L, "Gold", "images/resources/gold.gif", "Gold is one of the seven resources, and one of three basic resources. It is arguably the most important resource because it is needed basically for everything. The largest expenditure is troops, and another is town structures. However, gold is also needed to hire heroes, in several Adventure Map locations and to buy artifacts.");
 
   }
 

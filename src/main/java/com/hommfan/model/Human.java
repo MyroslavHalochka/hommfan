@@ -1,11 +1,14 @@
 package com.hommfan.model;
 
-public class Necromancer implements Race{
+import org.springframework.stereotype.Component;
+
+@Component
+public class Human implements Race{
 
   @Override
   public String getText() {
 
-    return "Mmmm";
+    return "Hello!";
 
   }
 
